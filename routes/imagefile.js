@@ -4,6 +4,9 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 
 var imageSchema = mongoose.Schema({
+email: {
+type: String,
+},   
  path: {
  type: String,
  required: true,
@@ -18,7 +21,7 @@ var imageSchema = mongoose.Schema({
  
  
 var Image = module.exports = mongoose.model('files', imageSchema);
- 
+
 router.getImages = function(callback, limit) {
  
  Image.find(callback).limit(limit);
@@ -51,14 +54,14 @@ var upload = multer({
 router.get('/', function(req, res, next) {
  res.render('index.ejs');
 });
- 
+
 router.post('/', upload.any(), function(req, res, next) {
  
  res.send(req.files);
 
  var path = req.files[0].path;
  var imageName = req.files[0].originalname;
- 
+
  var imagepath = {};
  imagepath['path'] = path;
  imagepath['originalname'] = imageName;
@@ -67,5 +70,5 @@ router.post('/', upload.any(), function(req, res, next) {
  });
  
 });
- 
+
 module.exports = router;
