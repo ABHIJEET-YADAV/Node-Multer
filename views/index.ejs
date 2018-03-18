@@ -1,12 +1,16 @@
 <html>
 <head>
- <title>test</title>
+ <title></title>
 </head>
 <body>
 <form action "/" method="POST" enctype="multipart/form-data">
  Email ID:<input type="email" name="email"><br><br>  
- <input type="file" name="myimage" ></input><br><br>
- <input type="submit" name="submit" value="submit"></input>
+ <input type="file" name="myimage" accept="image/*" onchange="loadFile(event)" ></input>
+ <img id="output"/><br><br>
+ <input type="submit" name="submit" value="submit"></input> <br><br>
 </form>
+
+<a href="http://localhost:3000/pre">Previously uploaded image</a>
+
 </body>
 </html>
